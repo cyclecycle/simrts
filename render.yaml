@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: simrts
+    runtime: node
+    plan: free
+    autoDeploy: true
+    buildCommand: npm install && npm --prefix server install && npm --prefix client install && npm --prefix client run build
+    startCommand: npm --prefix server run start

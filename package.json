@@ -1,0 +1,16 @@
+{
+    "name": "simrts",
+    "private": true,
+    "version": "0.1.0",
+    "scripts": {
+        "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+        "dev:clean": "kill-port 3000 5173",
+        "dev": "npm run dev:clean && concurrently -k -n server,client -c blue,magenta \"npm --prefix server run dev\" \"npm --prefix client run dev -- --host --port 5173 --strictPort\"",
+        "stop": "kill-port 3000 5173",
+        "build": "npm --prefix server run typecheck && npm --prefix client run build"
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.1",
+        "kill-port": "^2.0.1"
+    }
+}
